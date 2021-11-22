@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+//custom colors
+$theme-colors: (
+  "success": rgb(59, 65, 151),
+);
+
+//import the functions and variables
+@import "../node_modules/bootstrap/scss/_functions";
+@import "../node_modules/bootstrap/scss/_variables";
+
+.btn-outline-success:hover {
+  background-color: #8064a2 !important;
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap";
