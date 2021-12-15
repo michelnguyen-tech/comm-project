@@ -4,10 +4,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 #login-form {
-  width: 30%;
+  width: 400px;
   border: 1px solid black;
   border-radius: 5px;
+  padding: 20px 20px 25px 20px;
+}
+
+#forgot-pwd {
+  font-weight: lighter;
+  color: #1877f2;
+}
+
+#forgot-pwd:hover {
+  text-decoration: underline;
+}
+
+#register-link {
+  font-weight: lighter;
+  color: #1877f2;
+}
+
+#register-link:hover {
+  text-decoration: underline;
 }

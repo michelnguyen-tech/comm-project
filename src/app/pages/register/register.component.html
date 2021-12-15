@@ -1,21 +1,45 @@
 <div id="register-container">
     <div id="register-form" @markedState> 
         <form>
-          <legend>Register</legend>
+          <legend class="mb-3">Register</legend>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <label for="InputEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="InputEmail">
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <label for="InputUsername" class="form-label">Username</label>
+            <input type="password" class="form-control" id="InputUsername">
           </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          <div class="mb-3">
+            <label for="InputPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="InputPassword">
           </div>
-          <button type="submit" (click)="loginForm()" class="btn btn-primary">Submit</button>
+          <div class="row mb-4">
+            <label class="mb-2">Date Of Birth</label>
+            <div class="col">
+              <select #month class="form-select">
+              </select>
+            </div>
+            <div class="col">
+              <select class="form-select">
+                <option *ngFor="let day of days">{{day}}</option>
+              </select>
+            </div>
+            <div class="col">
+              <select class="form-select">
+                <option *ngFor="let year of years">{{year}}</option>
+              </select>
+            </div>   
+          </div>
+          <div class="d-grid gap-2 col-8 mx-auto">
+            <button class="btn btn-primary" type="button">Continue</button>
+          </div>
         </form>
+        <div class="terms">
+          <p>By registering, you agree to our <span id="register-link">Terms of Service</span> and <span id="register-link">Privacy Policy</span></p>
+        </div>
+    </div>
+    <div @markedState class="mx-auto">
+      <p>Already have an account? <span id="register-link" (click)="loginForm()">Sign in</span></p>
     </div>
 </div>
