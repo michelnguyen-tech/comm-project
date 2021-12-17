@@ -1,2 +1,9 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
+<div [ngClass]="{'side-nav' : loggedIn}" class="container">
+    <div *ngIf="loggedIn" class="side-content">
+        <app-side-nav></app-side-nav>
+      </div>
+      <div class="main-content">
+        <router-outlet></router-outlet>
+      </div>
+</div>
