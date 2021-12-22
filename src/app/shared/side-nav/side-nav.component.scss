@@ -1,4 +1,30 @@
 .side-nav {
   border-radius: 10px;
   background-color: rgb(228, 228, 228);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 240px;
+  padding: 6px 14px;
+}
+
+.side-nav ul li a {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  transition: all 0.4s ease;
+  border-radius: 12px;
+}
+
+.side-nav ul li a fa-icon {
+  height: 50px;
+  min-width: 50px;
+  border-radius: 12px;
+  line-height: 50px;
+}
+
+.side-nav ul li a:hover {
+  color: #11101d;
+  background: #fff;
 }

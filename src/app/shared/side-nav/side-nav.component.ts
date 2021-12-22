@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-side-nav',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent implements OnInit {
+  faUsers = faUsers;
 
   constructor() { }
 
