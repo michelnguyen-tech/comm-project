@@ -1,19 +1,19 @@
 <div class="side-nav">
     <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a #groups (click)=onActive(groups) class="nav-link">
             <fa-icon [icon]="['fas', 'users']"></fa-icon>
             <span class="links_name">Groups</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a #chat (click)=onActive(chat) class="nav-link">
             <fa-icon [icon]="['fas', 'comment']"></fa-icon>
             <span class="links_name">Chat</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link">
+          <a #files (click)=onActive(files) class="nav-link">
             <fa-icon [icon]="['fas', 'file']"></fa-icon>
             <span class="links_name">Files</span>
           </a>
