@@ -11,7 +11,10 @@ import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { GroupComponent } from './pages/group/group.component';
+import { ChatComponent } from './pages/chat/chat.component';
+import { FilesComponent } from './pages/files/files.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { far } from '@fortawesome/free-regular-svg-icons'
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    GroupComponent,
+    ChatComponent,
+    FilesComponent
   ],
   imports: [
     BrowserModule,

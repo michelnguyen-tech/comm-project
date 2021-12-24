@@ -27,4 +27,23 @@ $theme-colors: (
 }
 */
 
+.accordion-button {
+  transition: all 0.4s ease !important;
+}
+.accordion-button:not(.collapsed) {
+  color: rgb(85, 2, 219) !important;
+  background-color: rgb(226, 226, 226) !important;
+}
+
+.accordion-button:focus {
+  z-index: 3 !important;
+  outline: 0;
+  //box-shadow: 0 0 0 0.15rem rgb(85, 2, 219) !important;
+  box-shadow: none !important;
+}
+
+.accordion-button:hover {
+  border-left: 5px solid rgb(85, 2, 219) !important;
+}
+
 @import "../node_modules/bootstrap/scss/bootstrap";
