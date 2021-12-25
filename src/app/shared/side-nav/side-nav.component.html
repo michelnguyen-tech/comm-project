@@ -1,9 +1,10 @@
 <div class="side-nav">
     <ul class="nav flex-column">
         <li class="nav-item">
-          <a #groups (click)=onActive(groups) class="nav-link">
+          <a #groups id="groups" (click)=onActive(groups) class="nav-link">
             <fa-icon [icon]="['fas', 'users']"></fa-icon>
             <span class="links_name">Groups</span>
+            <button id="btn-add-group"><fa-icon id="plus-icon" [icon]="['fas', 'plus']"></fa-icon></button>
           </a>
         </li>
         <li class="nav-item">

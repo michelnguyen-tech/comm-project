@@ -2,8 +2,13 @@
   border-radius: 10px;
   background-color: rgb(226, 226, 226);
   position: fixed;
-  top: 0;
+  top: 55px;
   left: 240px;
   height: 100%;
   width: 240px;
+  overflow: scroll;
+}
+
+.chat-drp::before {
+  background-image: none !important;
 }
