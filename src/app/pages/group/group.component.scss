@@ -7,4 +7,24 @@
   height: 100%;
   width: 240px;
   overflow: scroll;
+  z-index: 1;
+}
+
+.accordion-button:hover .btn-group-item {
+  visibility: visible;
+  opacity: 1;
+}
+
+.btn-group-item {
+  position: absolute;
+  right: 19px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  border: none;
+  background-color: rgb(226, 226, 226);
+}
+
+.btn-group-item:hover {
+  color: #5502db;
 }

@@ -33,7 +33,7 @@ $theme-colors: (
 }
 .accordion-button:not(.collapsed) {
   color: rgb(85, 2, 219) !important;
-  background-color: rgb(226, 226, 226) !important;
+  background-color: rgb(255, 255, 255) !important;
 }
 
 .accordion-button:focus {
@@ -45,6 +45,7 @@ $theme-colors: (
 
 .accordion-button:hover {
   border-left: 5px solid rgb(85, 2, 219) !important;
+  background-color: rgb(226, 226, 226) !important;
 }
 
 .accordion-button::after {
@@ -52,22 +53,34 @@ $theme-colors: (
 }
 
 .accordion-button::before {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 0.2s linear;
   position: absolute;
   left: 5px;
   flex-shrink: 0;
-  width: 1rem;
-  height: 1rem;
+  width: 0rem;
+  height: 0rem;
   margin-left: auto;
   content: "";
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  border: 5px solid rgb(226, 226, 226);
+  border-left-color: rgb(85, 2, 219);
+  background-image: none !important;
   background-repeat: no-repeat;
   background-size: 1rem;
-  transition: transform 0.2s ease-in-out;
+}
+
+.accordion-button:hover::before {
+  //background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  visibility: visible;
+  opacity: 1;
+  transition: transform 0.2s ease-in-out, opacity 0.5s linear;
 }
 
 .accordion-button:not(.collapsed)::before {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-  transform: rotate(-180deg);
+  //background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  background-image: none !important;
+  transform: rotate(90deg);
 }
 
 @import "../node_modules/bootstrap/scss/bootstrap";

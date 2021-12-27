@@ -6,6 +6,7 @@
   left: 0;
   height: 100%;
   width: 240px;
+  z-index: 3;
 }
 
 .side-nav ul li a {
@@ -62,4 +63,16 @@
 
 #plus-icon:hover {
   background-color: rgb(216, 216, 216);
+}
+
+.group-menu {
+  /* height: 90px; */
+  width: 109px;
+  position: fixed;
+  padding: 10px 20px;
+  background: #fff;
+  top: 114px;
+  left: 192px;
+  z-index: 2;
+  visibility: hidden;
 }
