@@ -1,10 +1,19 @@
+.group-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 240px;
+  margin-top: 55px;
+  height: 700px;
+  width: 500px;
+}
+
 .accordion {
   border-radius: 10px;
   background-color: rgb(226, 226, 226);
-  position: fixed;
-  top: 55px;
-  left: 240px;
-  height: 100%;
+  position: relative;
+  //top: 55px;
+  //left: 240px;
+  //height: 100%;
   width: 240px;
   overflow: scroll;
   z-index: 1;
@@ -12,6 +21,7 @@
 
 .accordion-button:hover .btn-group-item {
   visibility: visible;
+  transition: visibility 0s, opacity 500ms linear !important;
   opacity: 1;
 }
 
@@ -20,11 +30,24 @@
   right: 19px;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
+  //transition: all 500ms ease-in-out !important;
+  transition: visibility 0s, opacity 100ms linear !important;
   border: none;
   background-color: rgb(226, 226, 226);
 }
 
 .btn-group-item:hover {
   color: #5502db;
+}
+
+.group-menu {
+  /* height: 90px; */
+  width: 109px;
+  position: absolute;
+  padding: 10px 20px;
+  background: #fff;
+  top: 1px;
+  left: 192px;
+  z-index: 2;
+  visibility: hidden;
 }

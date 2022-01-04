@@ -1,10 +1,55 @@
+.files-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 240px;
+  margin-top: 55px;
+  height: 700px;
+  width: 500px;
+}
+
 .accordion {
   border-radius: 10px;
   background-color: rgb(226, 226, 226);
-  position: fixed;
-  top: 55px;
-  left: 240px;
-  height: 100%;
+  position: relative;
+  //top: 55px;
+  //left: 240px;
+  //height: 100%;
   width: 240px;
-  overflow: scroll;
+  overflow-y: scroll;
+}
+
+.accordion-button:hover .btn-group-item {
+  visibility: visible;
+  opacity: 1;
+}
+
+.btn-group-item {
+  position: absolute;
+  right: 19px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  border: none;
+  background-color: rgb(226, 226, 226);
+}
+
+.btn-group-item:hover {
+  color: #5502db;
+}
+
+.group-menu {
+  /* height: 90px; */
+  width: 109px;
+  position: absolute;
+  padding: 10px 20px;
+  background: #fff;
+  top: 56px;
+  left: 112px;
+  z-index: 2;
+  visibility: visible;
+  border: 1px solid black;
+}
+
+.accordion-item {
+  position: relative !important;
 }

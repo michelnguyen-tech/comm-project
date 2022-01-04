@@ -55,7 +55,6 @@ $theme-colors: (
 .accordion-button::before {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s 2s, opacity 0.2s linear;
   position: absolute;
   left: 5px;
   flex-shrink: 0;

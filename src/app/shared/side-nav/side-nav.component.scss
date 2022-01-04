@@ -39,21 +39,19 @@
   opacity: 1;
 }
 
-#btn-add-group {
+.group-item #btn-add-group {
   margin-left: 56px;
   display: inline-block;
   width: 30px;
   height: 25px;
-  position: absolute;
-  right: 26px;
-  top: 19px;
+  position: relative;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
   border: none;
 }
 
-#plus-icon {
+.group-item #group-plus-icon {
   position: absolute;
   top: -13px;
   right: -10px;
@@ -61,18 +59,122 @@
   background-color: rgb(226, 226, 226);
 }
 
-#plus-icon:hover {
+.group-item #group-plus-icon:hover {
   background-color: rgb(216, 216, 216);
+}
+
+.group-menu.open {
+  display: block;
+  z-index: 30;
 }
 
 .group-menu {
   /* height: 90px; */
-  width: 109px;
-  position: fixed;
+  width: 111px;
+  position: absolute;
   padding: 10px 20px;
   background: #fff;
-  top: 114px;
-  left: 192px;
+  top: 59px;
+  left: 124px;
   z-index: 2;
+  visibility: visible;
+  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
+  display: none;
+}
+
+.group-menu div {
+  padding: 12px 20px;
+  cursor: pointer;
+  color: rgb(119, 119, 119);
+}
+
+.group-menu div:hover {
+  background-color: rgb(216, 216, 216);
+  color: #5502db;
+}
+
+#chat:hover #btn-add-chat {
+  visibility: visible;
+  opacity: 1;
+}
+
+.chat-item #btn-add-chat {
+  margin-left: 75px;
+  display: inline-block;
+  width: 30px;
+  height: 25px;
+  position: relative;
   visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  border: none;
+}
+
+.chat-item #chat-plus-icon {
+  position: absolute;
+  top: -13px;
+  right: -10px;
+  color: #5502db;
+  background-color: rgb(226, 226, 226);
+}
+
+.chat-item #chat-plus-icon:hover {
+  background-color: rgb(216, 216, 216);
+}
+
+.blocker {
+  display: none;
+}
+
+.activate {
+  display: block !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: " ";
+  //background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.chat-menu.open {
+  display: block;
+  z-index: 30;
+}
+
+.chat-menu {
+  /* height: 90px; */
+  width: 111px;
+  position: absolute;
+  padding: 10px 20px;
+  background: #fff;
+  top: 59px;
+  left: 124px;
+  z-index: 2;
+  visibility: visible;
+  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
+  display: none;
+}
+
+.chat-menu div {
+  padding: 12px 20px;
+  cursor: pointer;
+  color: rgb(119, 119, 119);
+}
+
+.chat-menu div:hover {
+  background-color: rgb(216, 216, 216);
+  color: #5502db;
+}
+
+#join-icon {
+  width: 20px;
+  height: 20px;
 }

@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faUserFriends, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-side-nav',
@@ -9,6 +9,8 @@ import { faUsers } from '@fortawesome/free-solid-svg-icons';
 })
 export class SideNavComponent implements OnInit {
   faUsers = faUsers;
+  faFriends = faUserFriends;
+  faArrowAltCircleRight = faArrowAltCircleRight;
   
   @ViewChild('groups')
   groups!: ElementRef<HTMLInputElement>;
@@ -18,6 +20,15 @@ export class SideNavComponent implements OnInit {
 
   @ViewChild('files')
   files!: ElementRef<HTMLInputElement>;
+
+  @ViewChild('groupmenu')
+  groupmenu!: ElementRef<HTMLInputElement>;
+
+  @ViewChild('chatmenu')
+  chatmenu!: ElementRef<HTMLInputElement>;
+
+  @ViewChild('blocker')
+  blocker!: ElementRef<HTMLInputElement>;
 
   constructor(private renderer: Renderer2, private router: Router) { }
 
@@ -42,4 +53,18 @@ export class SideNavComponent implements OnInit {
     }
   }
 
+  showGroupMenu(el: HTMLElement) {
+    el.classList.add("open");
+    this.renderer.addClass(this.blocker.nativeElement, "activate");
+  }
+
+  hideGroupMenu(el: HTMLElement) {
+    el.classList.remove("open");
+    this.renderer.removeClass(this.blocker.nativeElement, "activate");
+  }
+
+  showChatMenu(el: HTMLElement) {
+    el.classList.add("open");
+    this.renderer.addClass(this.blocker.nativeElement, "activate");
+  }
 }
