@@ -4,7 +4,7 @@
           <a #groups id="groups" (click)=onActive(groups) class="nav-link">
             <fa-icon [icon]="['fas', 'users']"></fa-icon>
             <span class="links_name">Groups</span>
-            <button id="btn-add-group" (click)=showGroupMenu(groupmenu) ><fa-icon id="group-plus-icon" [icon]="['fas', 'plus']"></fa-icon></button>
+            <button id="btn-add-group" (click)="showGroupMenu(groupmenu);$event.stopPropagation()"><fa-icon id="group-plus-icon" [icon]="['fas', 'plus']"></fa-icon></button>
           </a>
           <div #groupmenu class="group-menu"> 
             <div><fa-icon id="creategr-icon" [icon]="faFriends"></fa-icon> Create group</div>
@@ -15,12 +15,8 @@
           <a #chat id="chat" (click)=onActive(chat) class="nav-link">
             <fa-icon [icon]="['fas', 'comment']"></fa-icon>
             <span class="links_name">Chat</span>
-            <button id="btn-add-chat" (click)=showChatMenu(chatmenu) ><fa-icon id="chat-plus-icon" [icon]="['fas', 'plus']"></fa-icon></button>
+            <button id="btn-add-chat" (click)="showChatMenu();$event.stopPropagation()"><fa-icon id="chat-plus-icon" [icon]="['fas', 'plus']"></fa-icon></button>
           </a>
-          <div #chatmenu class="chat-menu"> 
-            <div><fa-icon id="creategr-icon" [icon]="faFriends"></fa-icon> Create group</div>
-            <div><fa-icon id="join-icon" [icon]="faArrowAltCircleRight"></fa-icon> Join Group</div>
-          </div>
         </li>
         <li class="nav-item">
           <a #files (click)=onActive(files) class="nav-link">

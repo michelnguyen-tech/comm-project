@@ -141,39 +141,6 @@
   z-index: 10;
 }
 
-.chat-menu.open {
-  display: block;
-  z-index: 30;
-}
-
-.chat-menu {
-  /* height: 90px; */
-  width: 111px;
-  position: absolute;
-  padding: 10px 20px;
-  background: #fff;
-  top: 59px;
-  left: 124px;
-  z-index: 2;
-  visibility: visible;
-  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-  overflow: hidden;
-  padding: 0;
-  display: none;
-}
-
-.chat-menu div {
-  padding: 12px 20px;
-  cursor: pointer;
-  color: rgb(119, 119, 119);
-}
-
-.chat-menu div:hover {
-  background-color: rgb(216, 216, 216);
-  color: #5502db;
-}
-
 #join-icon {
   width: 20px;
   height: 20px;

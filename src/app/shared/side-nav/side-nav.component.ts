@@ -63,8 +63,8 @@ export class SideNavComponent implements OnInit {
     this.renderer.removeClass(this.blocker.nativeElement, "activate");
   }
 
-  showChatMenu(el: HTMLElement) {
-    el.classList.add("open");
-    this.renderer.addClass(this.blocker.nativeElement, "activate");
+  showChatMenu() {
+    //el.classList.add("open");
+    //this.renderer.addClass(this.blocker.nativeElement, "activate");
   }
 }
