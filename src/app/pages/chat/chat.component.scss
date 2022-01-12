@@ -11,13 +11,33 @@
   border-radius: 10px;
   background-color: rgb(226, 226, 226);
   position: relative;
-  //top: 55px;
-  //left: 240px;
-  //height: 100%;
   width: 240px;
   overflow: scroll;
 }
 
 .chat-drp::before {
   background-image: none !important;
+}
+
+.list-active {
+  color: rgb(85, 2, 219) !important;
+  border-left: 5px solid rgb(85, 2, 219);
+}
+
+.x-icon {
+  color: rgb(85, 2, 219);
+  position: absolute;
+  right: 15px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.x-icon:hover {
+  color: rgb(130, 53, 253);
+}
+
+.accordion-button:hover .x-icon {
+  visibility: visible;
+  opacity: 1;
 }
