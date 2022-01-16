@@ -23,21 +23,36 @@
   position: relative !important;
 }
 
-.accordion-button:hover .btn-group-item {
-  visibility: visible;
-  transition: visibility 0s, opacity 500ms linear !important;
+.accordion-button:hover + .btn-group-item {
+  transition: opacity 500ms linear !important;
   opacity: 1;
+  color: #5502db;
+}
+
+.btn-group-item:hover {
+  transition: opacity 500ms linear !important;
+  opacity: 1;
+  color: rgb(130, 53, 253);
 }
 
 .btn-group-item {
   position: absolute;
-  right: 19px;
-  visibility: hidden;
+  //visibility: hidden;
   opacity: 0;
+  width: 0%;
+  height: 0%;
   //transition: all 500ms ease-in-out !important;
-  transition: visibility 0s, opacity 100ms linear !important;
+  transition: opacity 100ms linear !important;
   border: none;
-  background-color: rgb(226, 226, 226);
+  font-size: 0.5em;
+  top: 15px;
+  right: -20px;
+  z-index: 3;
+}
+
+.ellipsis-icon {
+  right: 39px;
+  position: absolute;
 }
 
 .btn-group-item.clicked {

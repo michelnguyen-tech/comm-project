@@ -25,6 +25,8 @@ export class GroupComponent implements OnInit {
     menu.classList.add("open");
     this.renderer.addClass(this.blocker.nativeElement, "activate");
     ellipse.classList.add("clicked");
+    console.log(event);
+
   }
 
   hideGroupMenu() {
