@@ -2,17 +2,18 @@
   <div class="accordion" id="accordionPanelsStayOpenExample">
     <div class="accordion-item">
       <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-        <button (click)="selectedChat($event)" class="accordion-button collapsed" type="button">
+        <button (click)="selectedChat($event); navigateToRoom(1)" class="accordion-button collapsed" type="button">
           Accordion Item #1 <fa-icon class="x-icon" [icon]="faTimes"></fa-icon>
         </button>
       </h2>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-        <button (click)="selectedChat($event)" class="accordion-button collapsed" type="button">
+        <button (click)="selectedChat($event); navigateToRoom(2)" class="accordion-button collapsed" type="button">
           Accordion Item #2 <fa-icon class="x-icon" [icon]="faTimes"></fa-icon>
         </button>
       </h2>
     </div>
   </div>
+  <router-outlet></router-outlet>
 </div>

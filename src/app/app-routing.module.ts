@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChannelComponent } from './pages/channel/channel.component';
+import { ChatRoomComponent } from './pages/chat-room/chat-room.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { FilesComponent } from './pages/files/files.component';
 import { GroupComponent } from './pages/group/group.component';
@@ -13,9 +15,13 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canDeactivate: [LoginFormGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent, children: [
-    { path: '', component: GroupComponent },
-    { path: 'groups', component: GroupComponent },
-    { path: 'chat', component: ChatComponent },
+    { path: '', redirectTo: 'groups', pathMatch: 'full'},
+    { path: 'groups', component: GroupComponent, children: [
+      { path: 'channel/:id', component: ChannelComponent }
+    ]},
+    { path: 'chat', component: ChatComponent, children: [
+      { path:':id', component: ChatRoomComponent }
+    ]},
     { path: 'files', component: FilesComponent },
   ] }
 ];

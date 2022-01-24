@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -9,7 +10,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 export class ChatComponent implements OnInit {
   faTimes = faTimes;
 
-  constructor(private renderer: Renderer2, private elem: ElementRef) { }
+  constructor(private renderer: Renderer2, private elem: ElementRef, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +24,10 @@ export class ChatComponent implements OnInit {
     const eventTarget: Element = event.target as Element;
     this.renderer.addClass(eventTarget, "list-active");
     console.log(eventTarget);
+  }
+
+  navigateToRoom(id: number) {
+    this.router.navigate(['/home', 'chat', id])
   }
 
 }

@@ -35,6 +35,10 @@ export class SideNavComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit() {
+    this.onActive(this.groups.nativeElement);
+  }
+
   onActive(el: HTMLElement) {
     console.log(el.children[1].innerHTML);
     this.renderer.removeClass(this.groups.nativeElement, "list-active");

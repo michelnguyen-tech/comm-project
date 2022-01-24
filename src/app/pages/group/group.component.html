@@ -10,9 +10,9 @@
       <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
         <div class="accordion-body">
           <ul class="sub-menu">
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Card Design</a></li>
-            <li><a href="#">Login Form</a></li>
+            <li><a (click)="navigateToChannel(1);">Web Design</a></li>
+            <li><a (click)="navigateToChannel(2);">Card Design</a></li>
+            <li><a (click)="navigateToChannel(3);">Login Form</a></li>
           </ul>
         </div>
       </div>
@@ -60,4 +60,5 @@
     </div>
     <div #blocker class="blocker" (click)=hideGroupMenu()></div>
   </div>
+  <router-outlet></router-outlet>
 </div>

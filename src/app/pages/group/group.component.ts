@@ -41,4 +41,8 @@ export class GroupComponent implements OnInit {
       ellipsis[i].classList.remove('clicked');
       }
   };
+
+  navigateToChannel(id: number) {
+    this.router.navigate(['/home', 'groups', 'channel', id])
+  }
 }

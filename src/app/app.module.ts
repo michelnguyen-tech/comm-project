@@ -14,7 +14,9 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { GroupComponent } from './pages/group/group.component';
 import { ChatComponent } from './pages/chat/chat.component';
-import { FilesComponent } from './pages/files/files.component'
+import { FilesComponent } from './pages/files/files.component';
+import { ChannelComponent } from './pages/channel/channel.component';
+import { ChatRoomComponent } from './pages/chat-room/chat-room.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { FilesComponent } from './pages/files/files.component'
     HomeComponent,
     GroupComponent,
     ChatComponent,
-    FilesComponent
+    FilesComponent,
+    ChannelComponent,
+    ChatRoomComponent
   ],
   imports: [
     BrowserModule,
