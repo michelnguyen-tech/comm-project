@@ -1,7 +1,7 @@
 import { animate, AnimationBuilder, style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, Subscription,  } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { markedTrigger } from './animations';
 

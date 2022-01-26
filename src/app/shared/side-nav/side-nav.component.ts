@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { faUsers, faUserFriends, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
+import { markedTrigger } from './animations';
 
 @Component({
   selector: 'app-side-nav',
@@ -11,6 +12,7 @@ export class SideNavComponent implements OnInit {
   faUsers = faUsers;
   faFriends = faUserFriends;
   faArrowAltCircleRight = faArrowAltCircleRight;
+  isCreateGroup = false;
   
   @ViewChild('groups')
   groups!: ElementRef<HTMLInputElement>;
@@ -65,6 +67,17 @@ export class SideNavComponent implements OnInit {
   hideGroupMenu(el: HTMLElement) {
     el.classList.remove("open");
     this.renderer.removeClass(this.blocker.nativeElement, "activate");
+  }
+
+  showCreateGroup(el: HTMLElement, el2: HTMLElement) {
+    el.classList.add("open");
+    el2.classList.remove("open");
+    this.renderer.addClass(this.blocker.nativeElement, "activate-darker");
+  }
+
+  hideCreateGroup(el: HTMLElement) {
+    el.classList.remove("open");
+    this.renderer.removeClass(this.blocker.nativeElement, "activate-darker");
   }
 
   showChatMenu() {

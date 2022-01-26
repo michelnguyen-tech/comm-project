@@ -7,7 +7,7 @@
             <button id="btn-add-group" (click)="showGroupMenu(groupmenu);$event.stopPropagation()"><fa-icon id="group-plus-icon" [icon]="['fas', 'plus']"></fa-icon></button>
           </a>
           <div #groupmenu class="group-menu"> 
-            <div><fa-icon id="creategr-icon" [icon]="faFriends"></fa-icon> Create group</div>
+            <div (click)="showCreateGroup(creategroup, groupmenu)"><fa-icon id="creategr-icon" [icon]="faFriends"></fa-icon> Create group</div>
             <div><fa-icon id="join-icon" [icon]="faArrowAltCircleRight"></fa-icon> Join Group</div>
           </div>
         </li>
@@ -25,5 +25,23 @@
           </a>
         </li>
       </ul>
-      <div #blocker class="blocker" (click)=hideGroupMenu(groupmenu)></div>
+      <div #blocker class="blocker" (click)="hideGroupMenu(groupmenu);hideCreateGroup(creategroup)"></div>
+      <div #creategroup @bubbleGrow class="create-group">
+        <div class="create-group-form">
+          <form>
+            <div class="mb-4">
+              <legend class="mb-3">Create a channel</legend>
+              <label for="exampleInputEmail1" class="form-label">Name</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Description</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="d-grid gap-2 col-8 mx-auto">
+              <button class="btn btn-primary" type="button" (click)="hideCreateGroup(creategroup)">Create</button>
+            </div>
+          </form>
+        </div>
+      </div>
 </div>
