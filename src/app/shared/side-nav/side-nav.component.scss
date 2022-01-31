@@ -153,6 +153,22 @@
   z-index: 10;
 }
 
+.blocker-side {
+  display: none;
+}
+
+.side-activate {
+  display: block !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: " ";
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
 #join-icon {
   width: 20px;
   height: 20px;
@@ -183,6 +199,35 @@
 }
 
 .create-group-form {
+  border-radius: 5px;
+  padding: 20px 20px 25px 20px;
+}
+
+.chat-to-user.open {
+  display: block;
+  z-index: 30;
+}
+
+.chat-to-user {
+  /* height: 90px; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  width: 350px;
+  padding: 10px 20px;
+  background: #fff;
+  z-index: 2;
+  visibility: visible;
+  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
+  display: none;
+}
+
+.chat-to-user-form {
   border-radius: 5px;
   padding: 20px 20px 25px 20px;
 }

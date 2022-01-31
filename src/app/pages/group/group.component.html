@@ -17,7 +17,7 @@
         </div>
       </div>
       <div #groupmenu class="group-menu"> 
-        <div><fa-icon id="creategr-icon" [icon]="faFriends"></fa-icon> Add user </div>
+        <div (click)="showAddUser(adduser);hideGroupMenu()"><fa-icon id="creategr-icon" [icon]="faFriends"></fa-icon> Add user </div>
         <div><fa-icon id="join-icon" [icon]="faArrowAltCircleRight"></fa-icon> Add channel1</div>
       </div>
     </div>
@@ -58,7 +58,22 @@
         </div>
       </div>
     </div>
-    <div #blocker class="blocker" (click)=hideGroupMenu()></div>
+    <div #blocker class="blocker" (click)="hideGroupMenu();hideAddUser(adduser);"></div>
+
+    <div #adduser class="add-user">
+      <div class="add-user-form">
+        <form>
+          <div class="mb-4">
+            <legend class="mb-3">Search for an user</legend>
+            <label for="exampleInputEmail1" class="form-label">Name</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="d-grid gap-2 col-8 mx-auto">
+            <button class="btn btn-primary" type="button" (click)="hideAddUser(adduser)">Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
   <router-outlet></router-outlet>
 </div>

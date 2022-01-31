@@ -15,7 +15,7 @@
           <a #chat id="chat" (click)=onActive(chat) class="nav-link">
             <fa-icon [icon]="['fas', 'comment']"></fa-icon>
             <span class="links_name">Chat</span>
-            <button id="btn-add-chat" (click)="showChatMenu();$event.stopPropagation()"><fa-icon id="chat-plus-icon" [icon]="['fas', 'plus']"></fa-icon></button>
+            <button id="btn-add-chat" (click)="showChatUser(chattouser);$event.stopPropagation()"><fa-icon id="chat-plus-icon" [icon]="['fas', 'plus']"></fa-icon></button>
           </a>
         </li>
         <li class="nav-item">
@@ -25,8 +25,9 @@
           </a>
         </li>
       </ul>
-      <div #blocker class="blocker" (click)="hideGroupMenu(groupmenu);hideCreateGroup(creategroup)"></div>
-      <div #creategroup @bubbleGrow class="create-group">
+      <div #blocker class="blocker" (click)="hideGroupMenu(groupmenu);hideCreateGroup(creategroup);hideChatUser(chattouser)"></div>
+      
+      <div #creategroup class="create-group">
         <div class="create-group-form">
           <form>
             <div class="mb-4">
@@ -44,4 +45,20 @@
           </form>
         </div>
       </div>
+
+      <div #chattouser class="chat-to-user">
+        <div class="chat-to-user-form">
+          <form>
+            <div class="mb-4">
+              <legend class="mb-3">Search for an user</legend>
+              <label for="exampleInputEmail1" class="form-label">Name</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="d-grid gap-2 col-8 mx-auto">
+              <button class="btn btn-primary" type="button" (click)="hideChatUser(chattouser)">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div #blockerside class="blocker-side"></div>
 </div>

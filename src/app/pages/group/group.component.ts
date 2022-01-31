@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { faEllipsisH, faUsers, faUserFriends, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
+import { DarkAreaService } from 'src/app/services/dark-area.service';
 
 @Component({
   selector: 'app-group',
@@ -15,8 +16,8 @@ export class GroupComponent implements OnInit {
 
   @ViewChild('blocker')
   blocker!: ElementRef<HTMLInputElement>;
-  
-  constructor(private renderer: Renderer2, private router: Router, private elem: ElementRef) { }
+
+  constructor(private renderer: Renderer2, private router: Router, private elem: ElementRef, private darkAreaService: DarkAreaService) {}
 
   ngOnInit(): void {
   }
@@ -41,6 +42,18 @@ export class GroupComponent implements OnInit {
       ellipsis[i].classList.remove('clicked');
       }
   };
+
+  showAddUser(el: HTMLElement) {
+    el.classList.add("open");
+    this.renderer.addClass(this.blocker.nativeElement, "activate-darker");
+    this.darkAreaService.sendClickEvent("activate");
+  }
+
+  hideAddUser(el: HTMLElement) {
+    el.classList.remove("open");
+    this.renderer.removeClass(this.blocker.nativeElement, "activate-darker");
+    this.darkAreaService.sendClickEvent('disactivate');
+  }
 
   navigateToChannel(id: number) {
     this.router.navigate(['/home', 'groups', 'channel', id])

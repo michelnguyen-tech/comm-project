@@ -1,7 +1,8 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { faUsers, faUserFriends, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
-import { markedTrigger } from './animations';
+import { Subscription } from 'rxjs';
+import { DarkAreaService } from 'src/app/services/dark-area.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -13,6 +14,7 @@ export class SideNavComponent implements OnInit {
   faFriends = faUserFriends;
   faArrowAltCircleRight = faArrowAltCircleRight;
   isCreateGroup = false;
+  clickEventsubscription:Subscription;
   
   @ViewChild('groups')
   groups!: ElementRef<HTMLInputElement>;
@@ -32,7 +34,13 @@ export class SideNavComponent implements OnInit {
   @ViewChild('blocker')
   blocker!: ElementRef<HTMLInputElement>;
 
-  constructor(private renderer: Renderer2, private router: Router) { }
+  @ViewChild('blockerside')
+  blockerside!: ElementRef<HTMLInputElement>;
+
+  constructor(private renderer: Renderer2, private router: Router, private darkAreaService: DarkAreaService) { 
+    this.clickEventsubscription = this.darkAreaService.getClickEvent().subscribe((value)=>{
+      this.handleDarkArea(value)}
+    )}
 
   ngOnInit(): void {
   }
@@ -80,8 +88,20 @@ export class SideNavComponent implements OnInit {
     this.renderer.removeClass(this.blocker.nativeElement, "activate-darker");
   }
 
-  showChatMenu() {
-    //el.classList.add("open");
-    //this.renderer.addClass(this.blocker.nativeElement, "activate");
+  showChatUser(el: HTMLElement) {
+    el.classList.add("open");
+    this.renderer.addClass(this.blocker.nativeElement, "activate-darker");
+  }
+
+  hideChatUser(el: HTMLElement) {
+    el.classList.remove("open");
+    this.renderer.removeClass(this.blocker.nativeElement, "activate-darker");
+  }
+
+  handleDarkArea(value:string) {
+    if (value == "activate") 
+      this.renderer.addClass(this.blockerside.nativeElement, "side-activate");
+    else if(value =="disactivate")
+      this.renderer.removeClass(this.blockerside.nativeElement, "side-activate");
   }
 }

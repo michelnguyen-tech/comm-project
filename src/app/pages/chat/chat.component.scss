@@ -10,8 +10,9 @@
 .accordion {
   border-radius: 10px;
   background-color: rgb(226, 226, 226);
-  position: relative;
+  position: fixed;
   width: 240px;
+  height: 100%;
   overflow: scroll;
 }
 
