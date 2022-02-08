@@ -1,6 +1,8 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Subscription } from 'rxjs';
+import { NavbarToggleService } from 'src/app/services/navbar-toggle.service';
 
 @Component({
   selector: 'app-chat',
@@ -9,10 +11,23 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 })
 export class ChatComponent implements OnInit {
   faTimes = faTimes;
+  toggleNavsubscription: Subscription;
+  toggleNav: boolean = false;
 
-  constructor(private renderer: Renderer2, private elem: ElementRef, private router:Router) { }
+  @ViewChild('container')
+  container!: ElementRef<HTMLInputElement>;
+
+  constructor(private renderer: Renderer2, private elem: ElementRef, private router:Router, private navToggleService: NavbarToggleService) {
+    this.toggleNavsubscription = this.navToggleService.getClickEvent().subscribe((value) => {
+      this.handleNavToggle(value);
+    })
+   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy() {
+    this.toggleNavsubscription.unsubscribe();
   }
 
   selectedChat(event: MouseEvent) {
@@ -28,6 +43,15 @@ export class ChatComponent implements OnInit {
 
   navigateToRoom(id: number) {
     this.router.navigate(['/home', 'chat', id])
+  }
+
+  handleNavToggle(value: string) {
+    if (value == "shrink") {
+      this.toggleNav = true;
+    }
+    else if(value == "increase") {
+      this.toggleNav = false;
+    }
   }
 
 }

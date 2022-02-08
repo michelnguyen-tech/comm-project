@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { faEllipsisH, faUsers, faUserFriends, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
+import { Subscription } from 'rxjs';
 import { DarkAreaService } from 'src/app/services/dark-area.service';
+import { NavbarToggleService } from 'src/app/services/navbar-toggle.service';
 
 @Component({
   selector: 'app-group',
@@ -13,13 +15,27 @@ export class GroupComponent implements OnInit {
   faUsers = faUsers;
   faFriends = faUserFriends;
   faArrowAltCircleRight = faArrowAltCircleRight;
+  toggleNavsubscription: Subscription;
+  toggleNav: boolean = false;
 
   @ViewChild('blocker')
   blocker!: ElementRef<HTMLInputElement>;
 
-  constructor(private renderer: Renderer2, private router: Router, private elem: ElementRef, private darkAreaService: DarkAreaService) {}
+  @ViewChild('container')
+  container!: ElementRef<HTMLInputElement>;
+
+  constructor(private renderer: Renderer2, private router: Router, private elem: ElementRef, 
+    private darkAreaService: DarkAreaService, private navToggleService: NavbarToggleService) {
+    this.toggleNavsubscription = this.navToggleService.getClickEvent().subscribe((value) => {
+      this.handleNavToggle(value);
+    })
+  }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy() {
+    this.toggleNavsubscription.unsubscribe();
   }
 
   showGroupMenu(menu: HTMLElement, ellipse: HTMLElement) {
@@ -57,5 +73,14 @@ export class GroupComponent implements OnInit {
 
   navigateToChannel(id: number) {
     this.router.navigate(['/home', 'groups', 'channel', id])
+  }
+
+  handleNavToggle(value: string) {
+    if (value == "shrink") {
+      this.toggleNav = true;
+    }
+    else if(value == "increase") {
+      this.toggleNav = false;
+    }
   }
 }

@@ -1,6 +1,9 @@
 <nav *ngIf="loggedIn" class="navbar navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand">Navbar</a>
+      <div class="title-section"> 
+        <a class="navbar-brand">Navbar</a>
+        <div (click)="toggleNavBar()"><span class="iconify"data-icon="bx:bx-menu" data-width="25" data-height="25"></span></div>
+      </div>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>

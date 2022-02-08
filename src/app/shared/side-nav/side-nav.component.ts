@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { faUsers, faUserFriends, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { DarkAreaService } from 'src/app/services/dark-area.service';
+import { NavbarToggleService } from 'src/app/services/navbar-toggle.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -14,7 +15,9 @@ export class SideNavComponent implements OnInit {
   faFriends = faUserFriends;
   faArrowAltCircleRight = faArrowAltCircleRight;
   isCreateGroup = false;
-  clickEventsubscription:Subscription;
+  isToggle = false;
+  clickEventsubscription: Subscription;
+  toggleNavsubscription: Subscription;
   
   @ViewChild('groups')
   groups!: ElementRef<HTMLInputElement>;
@@ -37,10 +40,27 @@ export class SideNavComponent implements OnInit {
   @ViewChild('blockerside')
   blockerside!: ElementRef<HTMLInputElement>;
 
-  constructor(private renderer: Renderer2, private router: Router, private darkAreaService: DarkAreaService) { 
-    this.clickEventsubscription = this.darkAreaService.getClickEvent().subscribe((value)=>{
+  @ViewChild('sidenav')
+  sidenav!: ElementRef<HTMLInputElement>;
+
+  @ViewChild('groupitem')
+  groupitem!: ElementRef<HTMLInputElement>;
+
+  @ViewChild('chatitem')
+  chatitem!: ElementRef<HTMLInputElement>;
+
+  @ViewChild('fileitem')
+  fileitem!: ElementRef<HTMLInputElement>;
+
+  constructor(private renderer: Renderer2, private router: Router, private darkAreaService: DarkAreaService, private navToggleService: NavbarToggleService) { 
+    this.clickEventsubscription = this.darkAreaService.getClickEvent().subscribe((value) => {
       this.handleDarkArea(value)}
-    )}
+    )
+    this.toggleNavsubscription = this.navToggleService.getClickEvent().subscribe((value) => {
+      this.handleNavToggle(value)
+    })
+  }
+
 
   ngOnInit(): void {
   }
@@ -49,20 +69,24 @@ export class SideNavComponent implements OnInit {
     this.onActive(this.groups.nativeElement);
   }
 
+  ngOnDestroy() {
+    this.toggleNavsubscription.unsubscribe();
+  }
+
   onActive(el: HTMLElement) {
-    console.log(el.children[1].innerHTML);
+    console.log(el.id);
     this.renderer.removeClass(this.groups.nativeElement, "list-active");
     this.renderer.removeClass(this.chat.nativeElement, "list-active");
     this.renderer.removeClass(this.files.nativeElement, "list-active");
     el.classList.add("list-active");
 
-    if(el.children[1].innerHTML == "Chat") {
+    if(el.id == "chat") {
       this.router.navigateByUrl('/home/chat');
     }
-    if(el.children[1].innerHTML == "Groups") {
+    if(el.id == "groups") {
       this.router.navigateByUrl('/home/groups');
     }
-    if(el.children[1].innerHTML == "Files") {
+    if(el.id == "files") {
       this.router.navigateByUrl('/home/files');
     }
   }
@@ -98,10 +122,27 @@ export class SideNavComponent implements OnInit {
     this.renderer.removeClass(this.blocker.nativeElement, "activate-darker");
   }
 
-  handleDarkArea(value:string) {
+  handleDarkArea(value: string) {
     if (value == "activate") 
       this.renderer.addClass(this.blockerside.nativeElement, "side-activate");
-    else if(value =="disactivate")
+    else if(value == "disactivate")
       this.renderer.removeClass(this.blockerside.nativeElement, "side-activate");
+  }
+
+  handleNavToggle(value: string) {
+    if (value == "shrink") {
+      this.isToggle = true;
+      this.renderer.addClass(this.sidenav.nativeElement, "side-shrink");
+      this.renderer.addClass(this.groupitem.nativeElement, "side-shrink");
+      this.renderer.addClass(this.fileitem.nativeElement, "side-shrink");
+      this.renderer.addClass(this.chatitem.nativeElement, "side-shrink");
+    }
+    else if(value == "increase") {
+      this.isToggle = false;
+      this.renderer.removeClass(this.sidenav.nativeElement, "side-shrink");
+      this.renderer.removeClass(this.groupitem.nativeElement, "side-shrink");
+      this.renderer.removeClass(this.fileitem.nativeElement, "side-shrink");
+      this.renderer.removeClass(this.chatitem.nativeElement, "side-shrink");
+    }
   }
 }

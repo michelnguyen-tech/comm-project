@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { Subscription } from 'rxjs';
+import { NavbarToggleService } from 'src/app/services/navbar-toggle.service';
 
 @Component({
   selector: 'app-files',
@@ -8,10 +10,29 @@ import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 })
 export class FilesComponent implements OnInit {
   faEllipsisH = faEllipsisH;
+  toggleNavsubscription: Subscription;
+  toggleNav: boolean = false;
   
-  constructor() { }
+  constructor(private navToggleService: NavbarToggleService) {
+    this.toggleNavsubscription = this.navToggleService.getClickEvent().subscribe((value) => {
+      this.handleNavToggle(value);
+    })
+  }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy() {
+    this.toggleNavsubscription.unsubscribe();
+  }
+
+  handleNavToggle(value: string) {
+    if (value == "shrink") {
+      this.toggleNav = true;
+    }
+    else if(value == "increase") {
+      this.toggleNav = false;
+    }
   }
 
 }
