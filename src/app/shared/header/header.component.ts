@@ -13,9 +13,16 @@ export class HeaderComponent implements OnInit {
 
   loggedIn : boolean = false;
   toggleNav : boolean = false
+  isToggle = false;
   private authSub!: Subscription;
+  toggleNavsubscription: Subscription;
 
-  constructor(private authService: AuthService, private toggleService: NavbarToggleService) { }
+
+  constructor(private authService: AuthService, private toggleService: NavbarToggleService, private navToggleService: NavbarToggleService) {
+    this.toggleNavsubscription = this.navToggleService.getClickEvent().subscribe((value) => {
+      this.handleNavToggle(value)
+    })
+   }
 
   ngOnInit(): void {
     this.authSub = this.authService.userAuthentified.subscribe(didAuth => {
@@ -31,8 +38,18 @@ export class HeaderComponent implements OnInit {
       this.toggleService.sendClickEvent("increase");
   }
 
+  handleNavToggle(value: string) {
+    if (value == "shrink") {
+      this.isToggle = true;
+    }
+    else if(value == "increase") {
+      this.isToggle = false;
+    }
+  }
+
   ngOnDestroy(): void {
     this.authSub.unsubscribe();
+    this.toggleNavsubscription.unsubscribe();
   }
 
 }

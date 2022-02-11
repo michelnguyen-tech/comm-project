@@ -12,7 +12,6 @@ export class NavbarToggleService {
   
   sendClickEvent(newValue:string) {
     this.subject.next(newValue);
-    console.log(newValue);
   }
 
   getClickEvent(): Observable<any>{ 
