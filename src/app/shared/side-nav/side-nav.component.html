@@ -4,7 +4,7 @@
           <a #groups id="groups" (click)=onActive(groups) class="nav-link">
             <fa-icon [icon]="['fas', 'users']"></fa-icon>
             <span *ngIf="!isToggle" class="links_name">Groups</span>
-            <button *ngIf="!isToggle" id="btn-add-group" (click)="showGroupMenu(groupmenu);$event.stopPropagation()"><fa-icon id="group-plus-icon" [icon]="['fas', 'plus']"></fa-icon></button>
+            <button *ngIf="!isToggle" id="btn-add-group" (click)="showGroupMenu(groupmenu)"><fa-icon id="group-plus-icon" [icon]="['fas', 'plus']"></fa-icon></button>
           </a>
           <div #groupmenu class="group-menu"> 
             <div (click)="showCreateGroup(creategroup, groupmenu)"><fa-icon id="creategr-icon" [icon]="faFriends"></fa-icon> Create group</div>
@@ -15,7 +15,7 @@
           <a #chat id="chat" (click)=onActive(chat) class="nav-link">
             <fa-icon [icon]="['fas', 'comment']"></fa-icon>
             <span *ngIf="!isToggle" class="links_name">Chat</span>
-            <button *ngIf="!isToggle" id="btn-add-chat" (click)="showChatUser(chattouser);$event.stopPropagation()"><fa-icon id="chat-plus-icon" [icon]="['fas', 'plus']"></fa-icon></button>
+            <button *ngIf="!isToggle" id="btn-add-chat" (click)="showChatUser(chattouser)"><fa-icon id="chat-plus-icon" [icon]="['fas', 'plus']"></fa-icon></button>
           </a>
         </li>
         <li #fileitem class="nav-item">
